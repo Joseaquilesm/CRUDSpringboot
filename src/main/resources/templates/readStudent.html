@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student</title>
+</head>
+<body>
+<table style="width:100%">
+    <tr th:if="${student}">
+        <th>Student Id</th>
+        <th>Name</th>
+        <th>Last Name</th>
+        <th>Phone</th>
+        <tr>
+        <td th:text="${student.idStudent}"></td>
+        <td th:text="${student.name}"></td>
+        <td th:text="${student.lastName}"></td>
+        <td th:text="${student.phone}"></td>
+       </tr>
+    </tr>
+
+</table>
+</body>
+</html>

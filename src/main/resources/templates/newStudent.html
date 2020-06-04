@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<nav class="navbar navbar-dark">
+    <a class="nav-item" href="/home">Home</a>
+    <a class="nav-item" href="/newStudent">New Student</a>
+</nav>
+
+    <h2>New Student</h2>
+    <form  action="/newStudent" method="POST">
+        <label for="idStudent">Id</label>
+        <input type="text" id="idStudent" name="idStudent" />
+
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" />
+
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" name="lastName" />
+
+        <label for="phone">phone</label>
+        <input type="text" id="phone" name="phone" />
+        <input type="submit" value="Submit"/>
+    </form>
+
+</body>
+</html>

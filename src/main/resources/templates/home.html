@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<header>
+    CRUD testing
+</header>
+
+<nav class="navbar navbar-dark">
+    <a class="nav-item" href="/">Home</a>
+    <a class="nav-item" href="/newStudent">New Student</a>
+</nav>
+
+<h2>List</h2>
+
+<p th:if="${studentList.isEmpty()}">
+    No students.
+</p>
+    <table style="width:100%">
+    <tr th:if="${!studentList.isEmpty()}">
+
+            <th>Student Id</th>
+            <th>Name</th>
+            <th>Last Name</th>
+            <th>Phone</th>
+
+            <tr th:each="student : ${studentList}">
+            <td th:text="${student.idStudent}">
+            </td>
+            <td th:text="${student.name}"></td>
+            <td th:text="${student.lastName}"></td>
+            <td th:text="${student.phone}"></td>
+            <td>
+                <a th:href="@{|/readStudent/${student.idStudent}|}">read</a>
+            </td>
+        <td>
+            <a th:href="@{|/updateStudent/${student.idStudent}|}">edit</a>
+        </td>
+        <td>
+            <a th:href="@{|/deleteStudent/${student.idStudent}|}">delete</a>
+        </td>
+            </tr>
+    </tr>
+
+    </table>
+
+</body>
+</html>
