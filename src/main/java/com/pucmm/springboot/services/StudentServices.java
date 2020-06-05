@@ -2,7 +2,10 @@ package com.pucmm.springboot.services;
 
 
 import com.pucmm.springboot.entity.Student;
+import com.pucmm.springboot.repositories.StudentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,19 +14,22 @@ import java.util.List;
 @Service
 public class StudentServices {
 
- private List<Student> studentList = new ArrayList<>();
+    @Autowired
+    StudentRepository studentRepository;
 
+    public void createStudent(Student student){
+        studentRepository.save(student);
+    }
 
-//Función Create Estudiante
-  public boolean createStudent(Student student){
-      if(studentList.add(student)){
-          return true;
-      }
-      return false;
-  }
+    public List<Student> allStudents(){
+        List<Student> studentList = new ArrayList<Student>();
+        studentRepository.findAll().forEach(student -> studentList.add(student));
+        return studentList;
+    }
+
 
   public Student readStudent(int idStudent){
-      for(Student s : studentList){
+      for(Student s : allStudents()){
           if(s.getIdStudent() == idStudent){
               return s;
           }
@@ -31,33 +37,20 @@ public class StudentServices {
       return null;
   }
 
-    public boolean updateStudent(Student student){
-        for(Student s : studentList){
-            if(s.getIdStudent() == student.getIdStudent()){
-                studentList.set(studentList.indexOf(s), student);
-                return true;
-            }
-        }
-       return false;
+    //SAME AS CREATE
+    public void updateStudent(Student student){
+        studentRepository.save(student);
     }
 
- public boolean deleteStudent(int idStudent){
-      for(Student s: studentList){
-          if(s.getIdStudent() == idStudent){
-              studentList.remove(s);
-              return true;
-          }
+ public boolean deleteStudent(int idStudent) {
+     for (Student s : allStudents()) {
+         if (s.getIdStudent() == idStudent) {
+             studentRepository.delete(s);
+             return true;
+         }
 
-      }
-      return false;
- }
-
-
-
- public List<Student> allStudents(){
-
-
-      return studentList;
+     }
+     return false;
  }
 
 }

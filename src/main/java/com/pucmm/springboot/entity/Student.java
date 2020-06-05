@@ -1,10 +1,19 @@
 package com.pucmm.springboot.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Student {
+    @Id
     private int idStudent;
     private String name;
     private String lastName;
     private String phone;
+
+    public Student(){
+        super();
+    }
 
     public Student(int idStudent, String name, String lastName, String phone) {
         this.idStudent = idStudent;
