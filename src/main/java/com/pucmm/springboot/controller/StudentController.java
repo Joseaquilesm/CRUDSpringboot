@@ -25,7 +25,7 @@ public class StudentController {
     }
     return "home";
   }
-
+//
   //create
   @RequestMapping(path = "/newStudent", method = RequestMethod.GET)
   public String create() {
