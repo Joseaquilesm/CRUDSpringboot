@@ -60,8 +60,6 @@ public class StudentController {
     return "redirect:/";
 
   }
-
-
   @RequestMapping(path = "/deleteStudent/{idStudent}", method = RequestMethod.GET)
   public String deleteStudent(@PathVariable int idStudent) {
     service.deleteStudent(idStudent);
